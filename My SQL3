@@ -1,0 +1,44 @@
+CREATE DATABASE colge_db;
+drop DATABASE colge_db;
+use colge_db;
+CREATE table stu(
+    rollNo int PRIMARY key,
+    name VARCHAR(60),
+    marks int,
+    grade VARCHAR(1),
+    city VARCHAR(80)
+);
+insert into stu
+(rollNo, name , marks , grade , city)
+VALUES
+(100,"ALi",80,"A","Loralai"),
+(200,"Sultan",90,"A","Quetta"),
+(300,"Kainat",85,"A","Loralai"),
+(400,"kamal",76,"B","Zhob"),
+(500,"dani",64,"C","Zhob");
+-- table related queries 
+ALTER table stu
+CHANGE name stu_name VARCHAR(80);
+alter table stu
+MODIFY grade varchar(1);
+alter table stu
+add COLUMN age int not null DEFAULT 20;
+alter table stu
+drop COLUMN age;
+alter table stu
+RENAME to student;
+
+SELECT * from student;
+-- truncate used to delete table data keep Strucher
+-- drope del the table
+-- delte delte the specific data,keep struchure
+TRUNCATE table student;
+DELETE from student
+where stu_name = "sana";
+drop table student;
+insert into student
+(rollNo, stu_name , marks , grade , city)
+VALUES
+(11,"sana",90,"A","Loralai"),
+(12,"anam",80,"B","Qutta");
+SELECT * from student;
