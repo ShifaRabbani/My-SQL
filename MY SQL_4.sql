@@ -52,16 +52,32 @@ VALUES
 
 SELECT * from makeup;
 
-SELECT coustomers.coustmer_id
+SELECT *
 from coustomers
 INNER join orders
 on coustomers.coustmer_id = orders.coustmer_id;
 
-SELECT coustomers.coustmer_id
-from coustomers
-RIGHT JOIN orders
-on coustomers.coustmer_id = orders.coustmer_id;
+SELECT coustomers.coustmer_id,name
+FROM coustomers
+LEFT JOIN orders
+ON coustomers.coustmer_id = orders.coustmer_id;
 
+SELECT *
+FROM coustomers
+LEFT JOIN orders
+ON coustomers.coustmer_id = orders.coustmer_id;
+
+SELECT *
+FROM coustomers
+LEFT JOIN orders
+ON coustomers.coustmer_id = orders.coustmer_id
+
+UNION
+
+SELECT *
+FROM coustomers
+RIGHT JOIN orders
+ON coustomers.coustmer_id = orders.coustmer_id;
 
 drop table orders;
 CREATE table orders(
@@ -96,7 +112,8 @@ VALUES
 SELECT * from orders;
 
 
-SELECT  FROM orders WHERE product_id = 40;
+DELETE from orders
+WHERE order_id = 111;
 
 
 
@@ -121,3 +138,23 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+SELECT * from orders
+WHERE quntity > (SELECT avg(quntity) from orders) ;
+
+
+SELECT * from coustomers WHERE city = 'lahore'
+
+SELECT * from makeup where price > 1000;
+
+SELECT * from makeup where price >1500 and price limit 2;
+
+SELECT * from orders ORDER BY coustmer_id;
+
+SELECT * from coustomers ORDER BY name ASC;
+
+SELECT count(order_id) , order_date 
+from orders
+GROUP BY order_date
+having min(order_id) > 113;
